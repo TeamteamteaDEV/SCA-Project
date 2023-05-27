@@ -1,0 +1,15 @@
+.error {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p1 {
+  font-size: 100px;
+}
+
+.p2 {
+  font-size: 30px;
+}
+

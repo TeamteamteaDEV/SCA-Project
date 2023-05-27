@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller</title>
+</head>
+<body>
+    <div class="system">
+        <div class='controlNavbar'>
+            <div>
+                <nav class="sidebar">
+                    <div class="image-text">
+                        <i class="image">
+                            <img src='logo.png' alt="logo"/>
+                        </i>
+                    <ul class="menu-link">                     
+                            <li class="nav-item">
+                                <a href="https://radiation-display-f5272.web.app/">
+                                    <i class="fa-solid fa-house icon"></i>
+                                </a> 
+                            </li>
+                            <li class="nav-item">
+                                <a href="/">               
+                                    <i class="fa-solid fa-microchip icon"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://radiation-display-f5272.web.app/display">
+                                    <i class="fa-solid fa-chart-simple icon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <Outlet />
+            </div>
+        </div>
+            <div class="container">
+                <div class="text"><p>Camera</p></div>
+                <div class="cam-part">
+                    <div class="row">
+                        <div class="fake-video">Video
+                        </div>
+                        <div class='video-operation'>
+                            <button id="record" class="vid-op-button">
+                                <i class="fa-solid fa-record-vinyl"></i>
+                            </button>
+                            <button id="capture" class="vid-op-button">
+                            <i class="fa-solid fa-camera"></i>
+                            </button>
+                            <button id="comment" class="vid-op-button">
+                                <i class="fa-solid fa-comment-dots"></i>
+                            </button>
+                            <button id="timer" class="vid-op-button">
+                                <i class="fa-solid fa-clock"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="prop-part">
+                    <div class="row">
+                        <div class="video-property">Vid Property</div>
+                        <div class="car-status">
+                            <div class='column'>Direction State : <span id="state"></span></div>
+                            <div class='column'>Driving Speed : <span id="driveSpeed"></span> &percnt;</div>
+                            <div class='column'>Rotating Speed : <span id="rotateSpeed"></span> &percnt;</div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+
+        <div class="controller">
+            <div class="button-control">
+            <div class="text">Controller</div>
+            <div class='direction-overall'>
+                <div class='direction-card'>
+                    <div class="control-part">
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)"
+                                id="forward-left" class="direction-button">
+                            <i class="fa-solid fa-arrow-up" style="transform: rotate(315deg);"></i>
+                        </button>
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="forward" class="direction-button">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </button>
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="forward-right" class="direction-button">
+                            <i class="fa-solid fa-arrow-up" style="transform: rotate(45deg);"></i>
+                        </button>
+                    </div>
+                    <div class="control-part">
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="left" class="direction-button">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button id="middle" class="direction-button"></button>
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="right" class="direction-button">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="control-part">
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="backward-left" class="direction-button">
+                            <i class="fa-solid fa-arrow-down" style="transform: rotate(45deg);"></i>
+                        </button>
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="backward" class="direction-button">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                        <button ontouchstart="touchHold(this)"
+                                ontouchend="touchRelease(this)"
+                                onmousedown="buttonHold(this)" 
+                                onmouseup="buttonRelease(this)" id="backward-right" class="direction-button">
+                            <i class="fa-solid fa-arrow-down" style="transform: rotate(315deg);"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="control-part-rotate">
+                    <button ontouchstart="touchHold(this)"
+                            ontouchend="touchRelease(this)"
+                            onmousedown="buttonHold(this)" 
+                            onmouseup="buttonRelease(this)" id="ccw" class="direction-button">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                    </button>  
+                    <button ontouchstart="touchHold(this)"
+                            ontouchend="touchRelease(this)"
+                            onmousedown="buttonHold(this)" 
+                            onmouseup="buttonRelease(this)" id="cw" class="direction-button">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>                        
+                    </button>                  
+                </div>
+                </div>
+            </div>
+            <div class="range-control">
+            <div class='speed-control'>
+                <div class='text'>Speed control</div>
+            </div>
+            <div class='range-slider-moving-speed'>
+                <p>Moving Speed</p>
+                <span>MIN</span>
+                <input type="range" 
+                    onchange="updateSliderPWM(this)" 
+                    id="slider1" 
+                    min="0" 
+                    max="100" 
+                    value="0" 
+                    step="1" 
+                    class="slider">
+                <!-- <input type="range" 
+                    name="moving speed"
+                    min="0" 
+                    max="100"
+                    value={movingSpeed} /> -->
+                <span>MAX</span>
+            </div>
+            <div class='range-slider-rotate-speed'>
+                <p>Rotation Speed</p>
+                <span>MIN</span>
+                <input type="range" 
+                    onchange="updateSliderPWM(this)" 
+                    id="slider2" 
+                    min="0" 
+                    max="100" 
+                    value="0" 
+                    step="1" 
+                    class="slider">
+                <!-- <input 
+                    type="range" 
+                    name="rotating speed"
+                    min="0" 
+                    max="100"
+                    value={rotatingSpeed} 
+                    /> -->
+                <span>MAX</span>
+            <div>
+            </div>  
+            </div>
+            </div>
+        </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
